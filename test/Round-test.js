@@ -7,9 +7,17 @@ const Card = require('../src/Card');
 
 describe('Round', function() {
 
-  //it should be a function
+  it('should be a function', function() {
+    const round = new Round();
 
-  //it should be an instance of Round
+    expect(Round).to.be.a('function');
+  });
+
+  it('should be an instance of Round', function() {
+    const round = new Round();
+
+    expect(round).to.be.an.instanceof(Round);
+  });
 
   //it should include a method to return the current
   //card being played
@@ -29,5 +37,5 @@ describe('Round', function() {
   //of correct guesses
 
   //it should include a method to print a message when the game is over
-  
+
 })
