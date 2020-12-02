@@ -73,13 +73,13 @@ describe('Round', function() {
     const round = new Round(deck);
     const turn = new Turn('tennis ball', card1);
 
-    round.takeTurns();
+    round.takeTurn();
 
     expect(round.turns).to.equal(1);
 
-    round.takeTurns();
-    round.takeTurns();
-    round.takeTurns();
+    round.takeTurn();
+    round.takeTurn();
+    round.takeTurn();
 
     expect(round.turns).to.equal(4);
   });
