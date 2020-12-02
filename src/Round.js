@@ -1,6 +1,12 @@
 class Round {
-  constructor() {
-    
+  constructor(deck) {
+    this.deck = deck,
+    this.turns = 0,
+    this.incorrectGuesses = 0
+  }
+
+  returnCurrentCard() {
+
   }
 }
 
