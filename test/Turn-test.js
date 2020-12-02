@@ -35,7 +35,7 @@ describe('Turn', function() {
   });
 
   it('should return a user\'s guess', function() {
-    const card = new Card(2, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
+    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
     const turn = new Turn('ball', card);
 
     turn.returnGuess();
@@ -44,8 +44,8 @@ describe('Turn', function() {
   });
 
   it('should return the Card object that was played', function() {
-    const card = new Card(2, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
-    const turn = new Turn('ball', card);
+    const card = new Card(2, `What kind of animal is Forrest?`, ['cat', 'dog', 'turtle'], 'dog');
+    const turn = new Turn('cat', card);
 
     turn.returnCard();
 
