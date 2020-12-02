@@ -9,9 +9,10 @@ class Round {
     this.turns++;
   }
 
-  // returnCurrentCard() {
-  //
-  // }
+  returnCurrentCard() {
+    // console.log(this.deck.cards[0]);
+    return this.deck.cards[0];
+  }
 }
 
 module.exports = Round;
