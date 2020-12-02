@@ -69,14 +69,14 @@ describe('Turn', function() {
   });
 
   it('should give the user feedback based on their answer', function() {
-    const card = new Card(4, `Forrest lives in a/an...`, ['apartment', 'house', 'condo'], 'condo');
-    const turn1 = new Turn('house', card);
+    const card = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
+    const turn1 = new Turn('swimming', card);
 
     turn1.giveFeedback();
 
     expect(turn1.giveFeedback()).to.equal('Incorrect!');
 
-    const turn2 = new Turn('condo', card);
+    const turn2 = new Turn('playing fetch', card);
 
     turn2.giveFeedback();
 
