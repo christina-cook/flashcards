@@ -52,19 +52,19 @@ describe('Turn', function() {
     expect(turn.returnCard()).to.equal(card);
   });
 
-  it.skip('should evaluate whether or not the user\'s guess matches the correct answer on the card', function() {
+  it('should indicate whether or not the user\'s guess is correct', function() {
     const card = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
     const turn1 = new Turn('hiking', card);
 
     turn1.evaluateGuess();
 
-    expect(turn1.evaluateGuess).to.equal(false);
+    expect(turn1.evaluateGuess()).to.equal(false);
 
     const turn2 = new Turn('playing fetch', card);
 
     turn2.evaluateGuess();
 
-    expect(turn2.evaluateGuess).to.equal(true);
+    expect(turn2.evaluateGuess()).to.equal(true);
 
   });
 
