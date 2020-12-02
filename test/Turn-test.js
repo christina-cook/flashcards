@@ -34,7 +34,7 @@ describe('Turn', function() {
     expect(card.correctAnswer).to.equal('ball');
   });
 
-  it.skip('should return a user\'s guess', function() {
+  it('should return a user\'s guess', function() {
     const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
     const turn = new Turn('ball', card);
 
@@ -43,13 +43,13 @@ describe('Turn', function() {
     expect(turn.returnGuess()).to.equal('ball');
   });
 
-  it.skip('should return the Card played', function() {
+  it('should return the Card object that was played', function() {
     const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
     const turn = new Turn('ball', card);
 
     turn.returnCard();
 
-    expect(turn.returnCard()).to.equal({ id: 1, question: `What is Forrest\'s favorite toy?`, answers: ['benebone', 'tennis ball', 'stuffed squirrel'], correctAnswer: 'ball'});
+    expect(turn.returnCard()).to.equal(card);
   });
 
   it.skip('should evaluate whether or not the user\'s guess matches the correct answer on the card', function() {
@@ -60,8 +60,8 @@ describe('Turn', function() {
 
     expect(turn.evaluateGuess).to.equal(true);
 
-    const card = new Card(2, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
-    const turn = new Turn('hiking', card);
+    const card2 = new Card(2, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
+    const turn2 = new Turn('hiking', card);
 
     turn.evaluateGuess();
 
@@ -77,8 +77,8 @@ describe('Turn', function() {
 
     expect(turn.giveFeedback).to.equal('Correct!');
 
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
-    const turn = new Turn('benebone', card);
+    const card2 = new Card(2, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
+    const turn2 = new Turn('hiking', card);
 
     turn.giveFeedback();
 
