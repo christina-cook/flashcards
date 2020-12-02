@@ -29,7 +29,7 @@ describe('Turn', function() {
     const turn = new Turn('ball', card);
 
     expect(turn.guess).to.equal('ball');
-    expect(card.question).to.equal(`What is Forrest\'s favorite toy?`);
+    expect(card.question).to.equal('What is Forrest\'s favorite toy?');
     expect(card.answers).to.deep.equal(['benebone', 'tennis ball', 'stuffed squirrel']);
     expect(card.correctAnswer).to.equal('ball');
   });
@@ -68,18 +68,18 @@ describe('Turn', function() {
 
   });
 
-  it.skip('should give the user feedback based on their answer', function() {
+  it('should give the user feedback based on their answer', function() {
     const card = new Card(4, `Forrest lives in a/an...`, ['apartment', 'house', 'condo'], 'condo');
     const turn1 = new Turn('house', card);
 
     turn1.giveFeedback();
 
-    expect(turn1.giveFeedback).to.equal('Incorrect!');
+    expect(turn1.giveFeedback()).to.equal('Incorrect!');
 
     const turn2 = new Turn('condo', card);
 
     turn2.giveFeedback();
 
-    expect(turn2.giveFeedback).to.equal('Correct!');
+    expect(turn2.giveFeedback()).to.equal('Correct!');
   })
 })
