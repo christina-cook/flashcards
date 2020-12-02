@@ -7,10 +7,10 @@ class Round {
 
   takeTurn() {
     this.turns++;
+    this.deck.cards.shift();
   }
 
   returnCurrentCard() {
-    // console.log(this.deck.cards[0]);
     return this.deck.cards[0];
   }
 }
