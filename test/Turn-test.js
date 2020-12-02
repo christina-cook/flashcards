@@ -35,7 +35,7 @@ describe('Turn', function() {
   });
 
   it('should return a user\'s guess', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
+    const card = new Card(2, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
     const turn = new Turn('ball', card);
 
     turn.returnGuess();
@@ -44,7 +44,7 @@ describe('Turn', function() {
   });
 
   it('should return the Card object that was played', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
+    const card = new Card(2, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
     const turn = new Turn('ball', card);
 
     turn.returnCard();
@@ -53,35 +53,33 @@ describe('Turn', function() {
   });
 
   it.skip('should evaluate whether or not the user\'s guess matches the correct answer on the card', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
-    const turn = new Turn('ball', card);
+    const card = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
+    const turn1 = new Turn('hiking', card);
 
-    turn.evaluateGuess();
+    turn1.evaluateGuess();
 
-    expect(turn.evaluateGuess).to.equal(true);
+    expect(turn1.evaluateGuess).to.equal(false);
 
-    const card2 = new Card(2, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
-    const turn2 = new Turn('hiking', card);
+    const turn2 = new Turn('playing fetch', card);
 
-    turn.evaluateGuess();
+    turn2.evaluateGuess();
 
-    expect(turn.evaluateGuess).to.equal(false);
+    expect(turn2.evaluateGuess).to.equal(true);
 
   });
 
   it.skip('should give the user feedback based on their answer', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
-    const turn = new Turn('ball', card);
+    const card = new Card(4, `Forrest lives in a/an...`, ['apartment', 'house', 'condo'], 'condo');
+    const turn1 = new Turn('house', card);
 
-    turn.giveFeedback();
+    turn1.giveFeedback();
 
-    expect(turn.giveFeedback).to.equal('Correct!');
+    expect(turn1.giveFeedback).to.equal('Incorrect!');
 
-    const card2 = new Card(2, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
-    const turn2 = new Turn('hiking', card);
+    const turn2 = new Turn('condo', card);
 
-    turn.giveFeedback();
+    turn2.giveFeedback();
 
-    expect(turn.giveFeedback).to.equal('Incorrect!');
+    expect(turn2.giveFeedback).to.equal('Correct!');
   })
 })
