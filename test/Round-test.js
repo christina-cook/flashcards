@@ -28,11 +28,6 @@ describe('Round', function() {
   });
 
 
-  // it('should include a deck with an array of cards', function() {
-  //   expect(round.deck.cards).to.deep.equal([card1, card2, card3])
-  // });
-
-
   it('should update the number of turns each time a turn is taken', function() {
     round.takeTurn('benebone');
 
@@ -60,29 +55,25 @@ describe('Round', function() {
   });
 
 
-  //guesses are evaluated
-  it.skip('should evaluate whether or not a guess is correct', function() {
-
-    // round.takeTurn('ball');
-    //
-    // expect(round.takeTurn()).to.equal('Correct!');
-
-    round.takeTurn('turtle');
-
-    expect(round.takeTurn()).to.equal('Incorrect!'); // returns when false but not when true
+  it('should indicate if a guess is correct', function() {
+    expect(round.takeTurn('ball')).to.equal('Correct!');
   });
 
-  //incorrect guesses are stored (via the id) in an array
-  //of incorrectGuesses
-  // need to test the id being added to the array
-  // it.skip('should store incorrect quesses in an array with the card id', function() {
-  //   const deck = new Deck([card1, card2, card3]);
-  //   const round = new Round(deck);
-  //
-  //
-  // });
 
-  //feedback is returned
+  it('should indicate if a guess is incorrect', function() {
+    expect(round.takeTurn('benebone')).to.equal('Incorrect!');
+  })
+
+
+  it('should store incorrect quesses in an array with the card id', function() {
+
+  round.takeTurn('ball');
+  round.takeTurn('cat');
+  round.takeTurn('swimming');
+
+  expect(round.incorrectGuesses.length).to.equal(2);
+  });
+
 
 
   // it.skip('should calculate and return the percentage of correct guesses', function() {
