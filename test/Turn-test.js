@@ -6,10 +6,12 @@ const Card = require('../src/Card');
 
 describe('Turn', function() {
 
-  it('should be a function', function() {
-    const turn = new Turn();
+  let card1, card2, card3;
 
-    expect(Turn).to.be.a('function');
+  beforeEach(function() {
+    card1 = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
+    card2 = new Card(2, `What kind of animal is Forrest?`, ['cat', 'dog', 'turtle'], 'dog');
+    card3 = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
   });
 
   it('should be an instance of Turn', function() {
@@ -25,18 +27,16 @@ describe('Turn', function() {
   });
 
   it('should be instantiated with a card object', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
-    const turn = new Turn('ball', card);
+    const turn = new Turn('ball', card1);
 
     expect(turn.guess).to.equal('ball');
-    expect(card.question).to.equal('What is Forrest\'s favorite toy?');
-    expect(card.answers).to.deep.equal(['benebone', 'ball', 'stuffed squirrel']);
-    expect(card.correctAnswer).to.equal('ball');
+    expect(card1.question).to.equal('What is Forrest\'s favorite toy?');
+    expect(card1.answers).to.deep.equal(['benebone', 'ball', 'stuffed squirrel']);
+    expect(card1.correctAnswer).to.equal('ball');
   });
 
   it('should return a user\'s guess', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
-    const turn = new Turn('ball', card);
+    const turn = new Turn('ball', card1);
 
     turn.returnGuess();
 
@@ -44,23 +44,21 @@ describe('Turn', function() {
   });
 
   it('should return the Card object that was played', function() {
-    const card = new Card(2, `What kind of animal is Forrest?`, ['cat', 'dog', 'turtle'], 'dog');
-    const turn = new Turn('cat', card);
+    const turn = new Turn('cat', card2);
 
     turn.returnCard();
 
-    expect(turn.returnCard()).to.equal(card);
+    expect(turn.returnCard()).to.equal(card2);
   });
 
   it('should indicate whether or not the user\'s guess is correct', function() {
-    const card = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
-    const turn1 = new Turn('hiking', card);
+    const turn1 = new Turn('cat', card2);
 
     turn1.evaluateGuess();
 
     expect(turn1.evaluateGuess()).to.equal(false);
 
-    const turn2 = new Turn('playing fetch', card);
+    const turn2 = new Turn('playing fetch', card3);
 
     turn2.evaluateGuess();
 
@@ -69,14 +67,13 @@ describe('Turn', function() {
   });
 
   it('should give the user feedback based on their answer', function() {
-    const card = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
-    const turn1 = new Turn('swimming', card);
+    const turn1 = new Turn('benebone', card1);
 
     turn1.giveFeedback();
 
     expect(turn1.giveFeedback()).to.equal('Incorrect!');
 
-    const turn2 = new Turn('playing fetch', card);
+    const turn2 = new Turn('playing fetch', card3);
 
     turn2.giveFeedback();
 
