@@ -76,21 +76,23 @@ describe('Round', function() {
 
 
 
-  // it.skip('should calculate and return the percentage of correct guesses', function() {
-  //   const deck = new Deck([card1, card2, card3]);
-  //   const round = new Round(deck);
-  //
-  //   round.calculatePercentCorrect();
-  //
-  // });
-  //
-  //
-  // it.skip('should print a message when the game is over', function() {
-  //   const deck = new Deck([card1, card2, card3]);
-  //   const round = new Round(deck);
-  //
-  //   round.endRound();
-  //
-  // });
+  it('should calculate the percentage of correct guesses', function() {
+
+    round.takeTurn('ball');
+    round.takeTurn('cat');
+
+    round.calculatePercentCorrect();
+
+    expect(round.calculatePercentCorrect()).to.equal(50);
+  });
+
+
+  it.skip('should print a message when the game is over', function() {
+    const deck = new Deck([card1, card2, card3]);
+    const round = new Round(deck);
+
+    round.endRound();
+
+  });
 
 })
