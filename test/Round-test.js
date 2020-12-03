@@ -80,19 +80,23 @@ describe('Round', function() {
 
     round.takeTurn('ball');
     round.takeTurn('cat');
+    // round.takeTurn('swimming')
 
     round.calculatePercentCorrect();
 
+    // expect(round.calculatePercentCorrect()).to.equal(33);
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
 
 
   it.skip('should print a message when the game is over', function() {
-    const deck = new Deck([card1, card2, card3]);
-    const round = new Round(deck);
 
-    round.endRound();
+    round.takeTurn('ball');
+    round.takeTurn('cat');
 
+    round.calculatePercentCorrect();
+
+    expect(round.endRound()).to.equal('** Round over! ** You answered 50% of the questions correctly!');
   });
 
 })
