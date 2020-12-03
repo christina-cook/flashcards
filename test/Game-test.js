@@ -1,10 +1,31 @@
-// should keep track of the current round (property) ***
+const chai = require('chai');
+const expect = chai.expect;
 
-// should include a method to start the game ***
-// 
-// creates Cards
-// puts Cards in a Deck
-// creates a new Round using the Deck
+const Round = require('../src/Round');
+const Game = require('../src/Game');
 
-// invokes printMessage to display message in the CLI
-// invokes printQuestion
+
+describe('Game', function() {
+  let game;
+
+  beforeEach(function() {
+    game = new Game();
+  });
+
+  it('should be a function', function() {
+    expect(Game).to.be.a('function');
+  });
+
+
+  it('should be an instance of Game', function() {
+    expect(game).to.be.an.instanceof(Game);
+  });
+
+
+  it('should instantiate a new round', function() {
+    game.start();
+
+    expect(game.currentRound).to.be.an.instanceof(Round);
+  });
+
+})

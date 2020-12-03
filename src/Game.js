@@ -14,13 +14,14 @@ class Game {
   start() {
     // create Cards
     const cards = prototypeQuestions.map(data => {
-      return card = new Card(data.id, data.question, data.answers, data.correctAnswer)
+      let card = new Card(data.id, data.question, data.answers, data.correctAnswer);
+      return card;
     });
     // put Cards in a Deck
     let deck = new Deck(cards);
     // create a Round using the Deck
     this.currentRound = new Round(deck);
-    this.printMessage();
+    this.printMessage(deck, this.currentRound);
     this.printQuestion(this.currentRound);
   }
 
