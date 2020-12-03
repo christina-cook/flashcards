@@ -25,17 +25,17 @@ describe('Turn', function() {
   });
 
   it('should be instantiated with a card object', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
+    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
     const turn = new Turn('ball', card);
 
     expect(turn.guess).to.equal('ball');
     expect(card.question).to.equal('What is Forrest\'s favorite toy?');
-    expect(card.answers).to.deep.equal(['benebone', 'tennis ball', 'stuffed squirrel']);
+    expect(card.answers).to.deep.equal(['benebone', 'ball', 'stuffed squirrel']);
     expect(card.correctAnswer).to.equal('ball');
   });
 
   it('should return a user\'s guess', function() {
-    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
+    const card = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
     const turn = new Turn('ball', card);
 
     turn.returnGuess();
