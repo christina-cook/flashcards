@@ -47,76 +47,78 @@ describe('Round', function() {
   });
 
 
-  it('should indicate the number of incorrect quesses, starting at 0', function() {
+  it('should update the number of turns each time a turn is taken', function() {
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
 
-    expect(round.incorrectGuesses).to.equal(0);
-  });
-
-
-  it('should return the first card in the deck as the current card being played', function() {
-    const deck = new Deck([card1, card2, card3]);
-    const round = new Round(deck);
-
-    round.returnCurrentCard();
-
-    expect(round.deck.cards[0]).to.deep.equal({id: 1, question: "What is Forrest's favorite toy?", answers: [ 'benebone', 'tennis ball', 'stuffed squirrel' ], correctAnswer: 'ball'});
-    // expect(round.deck.cards[0]).to.deep.equal(card1);
-  });
-
-
-  it('should instantiate a new Turn when a guess is made', function() {
-    const deck = new Deck([card1, card2, card3]);
-    const round = new Round(deck);
-    const turn = new Turn();
-
-    expect(turn).to.be.an.instanceof(Turn);
-  }),
-
-
-  it('should increment the turns count each time a turn is made', function() {
-    const deck = new Deck([card1, card2, card3]);
-    const round = new Round(deck);
-    const turn = new Turn();
-
-    round.takeTurn();
+    round.takeTurn('benebone');
 
     expect(round.turns).to.equal(1);
 
-    round.takeTurn();
-    round.takeTurn();
-    round.takeTurn();
+    round.takeTurn('dog');
+    round.takeTurn('hiking');
 
-    expect(round.turns).to.equal(4);
+    expect(round.turns).to.equal(3);
   });
 
-  //the turns count increments regardless of whether the answer was correct
-  //the next card then becomes the current card
-  //guesses are evaluated
-  //incorrect guesses are stored (via the id) in an array
-  //of incorrectGuesses
-  //feedback is returned
 
-  it('should replace the current card at the end of each turn', function() {
+  it('should return a new card at the end of each turn', function() {
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
 
-    round.takeTurn();
     round.returnCurrentCard();
 
-    expect(round.deck.cards[0]).to.deep.equal({id: 2, question: 'What kind of animal is Forrest?', answers: [ 'cat', 'dog', 'turtle' ], correctAnswer: 'dog'});
+    expect(round.returnCurrentCard()).to.equal(card1);
 
-    round.takeTurn();
-    round.returnCurrentCard();
-    expect(round.deck.cards[0]).to.deep.equal({id: 3, question: "What is Forrest's favorite activity?", answers: [ 'hiking', 'playing fetch', 'swimming' ], correctAnswer: 'playing fetch'});
-  })
+    round.takeTurn('cat');
 
-  // once a card is played it needs to move to the end of the array
+    expect(round.returnCurrentCard()).to.equal(card2);
 
-  //it should include a method to calculate and return percentage
-  //of correct guesses
+    round.takeTurn('hiking');
 
-  //it should include a method to print a message when the game is over
+    expect(round.returnCurrentCard()).to.equal(card3);
+  });
+
+
+
+  //guesses are evaluated
+  // it.skip('should evaluate whether or not a guess is correct', function() {
+  //   const deck = new Deck([card1, card2, card3]);
+  //   const round = new Round(deck);
+  //
+  //   round.takeTurn(); //
+  //
+  //   expect().to.equal('Incorrect!');
+  // });
+
+  //incorrect guesses are stored (via the id) in an array
+  //of incorrectGuesses
+  // need to test the id being added to the array
+  // it.skip('should store incorrect quesses in an array with the card id', function() {
+  //   const deck = new Deck([card1, card2, card3]);
+  //   const round = new Round(deck);
+  //
+  //
+  // });
+
+  //feedback is returned
+
+
+  // it.skip('should calculate and return the percentage of correct guesses', function() {
+  //   const deck = new Deck([card1, card2, card3]);
+  //   const round = new Round(deck);
+  //
+  //   round.calculatePercentCorrect();
+  //
+  // });
+  //
+  //
+  // it.skip('should print a message when the game is over', function() {
+  //   const deck = new Deck([card1, card2, card3]);
+  //   const round = new Round(deck);
+  //
+  //   round.endRound();
+  //
+  // });
 
 })
