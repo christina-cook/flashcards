@@ -8,16 +8,15 @@ class Round {
   }
 
   takeTurn(guess) {
-    const turn = new Turn(guess, this.deck.cards[this.turns]); // how do I indicate which card?
-    // need to instantiate a new Turn when this
-    // method is called
+    const currentCard = this.returnCurrentCard();
+    const turn = new Turn(guess, currentCard);
     this.turns++;
-    //turn.evaluateGuess();
-    //if turn.evaluateGuess === false
-    // a way to store incorrect guesses in the array
-    // this.incorrectGuesses.push(this.currentCard.id)
+    // if (turn.evaluateGuess() === false) {
+    //   this.incorrectGuesses.push(currentCard.id) // this pushes the id when evaluateGuess === true for some reason
+    // }
+    //console.log(this.incorrectGuesses)
     this.returnCurrentCard();
-    // return turn.giveFeedback();
+    return turn.giveFeedback(); // only returning feedback when the answer is incorrect
   }
 
   returnCurrentCard() {

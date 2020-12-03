@@ -10,7 +10,7 @@ describe('Round', function() {
   let card1, card2, card3, deck, round;
 
   beforeEach(function() {
-    card1 = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'tennis ball', 'stuffed squirrel'], 'ball');
+    card1 = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
     card2 = new Card(2, `What kind of animal is Forrest?`, ['cat', 'dog', 'turtle'], 'dog');
     card3 = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
     deck = new Deck([card1, card2, card3]);
@@ -28,14 +28,9 @@ describe('Round', function() {
   });
 
 
-  it('should include a deck with an array of cards', function() {
-    expect(round.deck.cards).to.deep.equal([card1, card2, card3])
-  });
-
-
-  it('should indicate the number of turns, starting at 0', function() {
-    expect(round.turns).to.equal(0);
-  });
+  // it('should include a deck with an array of cards', function() {
+  //   expect(round.deck.cards).to.deep.equal([card1, card2, card3])
+  // });
 
 
   it('should update the number of turns each time a turn is taken', function() {
@@ -65,16 +60,17 @@ describe('Round', function() {
   });
 
 
-
   //guesses are evaluated
-  // it.skip('should evaluate whether or not a guess is correct', function() {
-  //   const deck = new Deck([card1, card2, card3]);
-  //   const round = new Round(deck);
-  //
-  //   round.takeTurn(); //
-  //
-  //   expect().to.equal('Incorrect!');
-  // });
+  it.skip('should evaluate whether or not a guess is correct', function() {
+
+    // round.takeTurn('ball');
+    //
+    // expect(round.takeTurn()).to.equal('Correct!');
+
+    round.takeTurn('turtle');
+
+    expect(round.takeTurn()).to.equal('Incorrect!'); // returns when false but not when true
+  });
 
   //incorrect guesses are stored (via the id) in an array
   //of incorrectGuesses
