@@ -20,7 +20,7 @@ describe('Game', () => {
     expect(game).to.be.an.instanceof(Game);
   });
 
-  it('should instantiate a new round', () => {
+  it('should instantiate a new Round', () => {
     game.start();
     expect(game.currentRound).to.be.an.instanceof(Round);
   });
