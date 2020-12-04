@@ -26,11 +26,13 @@ class Round {
     const totalIncorrect = this.incorrectGuesses.length;
     const percentIncorrect = totalIncorrect / this.turns;
     const percentCorrect = 100 - (percentIncorrect * 100);
-    return percentCorrect;
+    return Math.round(percentCorrect);
   }
 
   endRound() {
-    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`);
+    const message = `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
+    console.log(message);
+    return message;
   }
 }
 
