@@ -67,11 +67,11 @@ describe('Round', function() {
 
   it('should store incorrect quesses in an array with the card id', function() {
 
-  round.takeTurn('ball');
-  round.takeTurn('cat');
-  round.takeTurn('swimming');
+    round.takeTurn('ball');
+    round.takeTurn('cat');
+    round.takeTurn('swimming');
 
-  expect(round.incorrectGuesses.length).to.equal(2);
+    expect(round.incorrectGuesses.length).to.equal(2);
   });
 
 
@@ -80,23 +80,23 @@ describe('Round', function() {
 
     round.takeTurn('ball');
     round.takeTurn('cat');
-    // round.takeTurn('swimming')
+    round.takeTurn('swimming')
 
     round.calculatePercentCorrect();
 
-    // expect(round.calculatePercentCorrect()).to.equal(33);
-    expect(round.calculatePercentCorrect()).to.equal(50);
+    expect(round.calculatePercentCorrect()).to.equal(33);
   });
 
 
-  it.skip('should print a message when the game is over', function() {
+  it('should print a message when the game is over', function() {
 
     round.takeTurn('ball');
     round.takeTurn('cat');
+    round.takeTurn('swimming')
 
     round.calculatePercentCorrect();
-
-    expect(round.endRound()).to.equal('** Round over! ** You answered 50% of the questions correctly!');
+    round.endRound()
+    expect(round.endRound()).to.equal('** Round over! ** You answered 33% of the questions correctly!');
   });
 
 })

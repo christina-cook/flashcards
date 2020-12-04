@@ -12,14 +12,10 @@ class Game {
   }
 
   start() {
-    // create Cards
     const cards = prototypeQuestions.map(data => {
-      let card = new Card(data.id, data.question, data.answers, data.correctAnswer);
-      return card;
+      return new Card(data.id, data.question, data.answers, data.correctAnswer);
     });
-    // put Cards in a Deck
-    let deck = new Deck(cards);
-    // create a Round using the Deck
+    const deck = new Deck(cards);
     this.currentRound = new Round(deck);
     this.printMessage(deck, this.currentRound);
     this.printQuestion(this.currentRound);
