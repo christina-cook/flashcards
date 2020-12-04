@@ -9,9 +9,9 @@ describe('Round', () => {
   let card1, card2, card3, deck, round;
 
   beforeEach(() => {
-    card1 = new Card(1, `What is Forrest\'s favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
+    card1 = new Card(1, `What is Forrest's favorite toy?`, ['benebone', 'ball', 'stuffed squirrel'], 'ball');
     card2 = new Card(2, `What kind of animal is Forrest?`, ['cat', 'dog', 'turtle'], 'dog');
-    card3 = new Card(3, `What is Forrest\'s favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
+    card3 = new Card(3, `What is Forrest's favorite activity?`, ['hiking', 'playing fetch', 'swimming'], 'playing fetch');
     deck = new Deck([card1, card2, card3]);
     round = new Round(deck);
   });
