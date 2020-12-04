@@ -16,16 +16,12 @@ describe('Game', function() {
     expect(Game).to.be.a('function');
   });
 
-
   it('should be an instance of Game', function() {
     expect(game).to.be.an.instanceof(Game);
   });
 
-
   it('should instantiate a new round', function() {
     game.start();
-
     expect(game.currentRound).to.be.an.instanceof(Round);
   });
-
-})
+});
